@@ -36,7 +36,7 @@ const create_user_options = {
   body: JSON.stringify({
     metadata: {
       '@private': {
-        email: 'user@email.com',
+        email: 'user@email.com', //Placeholder data, required by CometChat
         contactNumber: '0123456789',
       },
     },
