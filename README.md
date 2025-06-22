@@ -53,7 +53,12 @@ await fetch(create_user_url, create_user_options);
 
 ---
 
-### 👥 2. Add user to public group
+## 👤 2. Logging in the user
+```ts
+const loggedInUser = await CometChatUIKit.login({uid: name});
+```
+
+### 👥 3. Add user to public group
 
 ```ts
 const add_to_group_url = `https://${COMETCHAT_APPID}.api-in.cometchat.io/v3/groups/anonymous-chat-123/members`;
@@ -93,14 +98,11 @@ await CometChatUIKit.sendTextMessage(textMessage);
 
 ```tsx
 import { CometChatMessageList } from '@cometchat/chat-uikit-react-native';
+//Get group data after logging in the user.
+const groupData = await CometChat.getGroup('anonymous-chat-123');
+setChatGroup(groupData);
 
-<CometChatMessageList
-  group={{
-    guid: 'anonymous-chat-123',
-    name: 'Anonymous Group',
-    type: 'public',
-  }}
-/>
+{chatGroup && <CometChatMessageList group={chatGroup} />}
 ```
 
 A Text Input is used to send the message and CometChat handles all the real-time logic and UI for displaying the messages with the `CometChatMessageList` component.
