@@ -56,6 +56,9 @@ await fetch(create_user_url, create_user_options);
 ## 👤 2. Logging in the user
 ```ts
 const loggedInUser = await CometChatUIKit.login({uid: name});
+//Get group data after logging in the user.
+const groupData = await CometChat.getGroup('anonymous-chat-123');
+setChatGroup(groupData);
 ```
 
 ### 👥 3. Add user to public group
@@ -98,9 +101,7 @@ await CometChatUIKit.sendTextMessage(textMessage);
 
 ```tsx
 import { CometChatMessageList } from '@cometchat/chat-uikit-react-native';
-//Get group data after logging in the user.
-const groupData = await CometChat.getGroup('anonymous-chat-123');
-setChatGroup(groupData);
+
 
 {chatGroup && <CometChatMessageList group={chatGroup} />}
 ```
